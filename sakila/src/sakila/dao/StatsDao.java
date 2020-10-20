@@ -1,25 +1,48 @@
 package sakila.dao;
 
-import java.sql.Connection;
+import java.sql.*;
+
+
+import sakila.service.StatsQuery;
 import sakila.vo.Stats;
 
 public class StatsDao {
-	//오늘 날짜 여부 확인
-	public boolean selectDay(Connection conn, Stats stats) throws Exception {
-		//rs.next() false 일 경우 insert로 넘어감
-		/*if(rs.next()) {
-		return true;
+	//날짜를 받아온 후 그 날의 접속자가 유무 판별하는 메서드
+	public Stats selectDay(Connection conn, Stats stats) throws Exception {
+		Stats returnStats = null;
+		PreparedStatement stmt = conn.prepareStatement(StatsQuery.SELECT_DAY);
+		stmt.setString(1, stats.getDay());
+		ResultSet rs = stmt.executeQuery();
+		if(rs.next()) {
+			returnStats = new Stats();
+			returnStats.setDay(rs.getString("day"));
+			returnStats.setCount(rs.getInt("count"));
 		}
-		*/
-		return false;
+		return returnStats;
 	}
-	//새로운 날짜일 경우
+	//방문자의 수를 1로 초기화 시키는 메서드
 	public void insertStats(Connection conn, Stats stats) throws Exception {
+		PreparedStatement stmt = conn.prepareStatement(StatsQuery.INSERT_STATS);
+		stmt.setString(1, stats.getDay());
 		
+		stmt.executeUpdate();
 	}
-	//방문자 접속시 Stat 추가
-	public void updateStats(Connection conn) throws Exception {
+	//방문자의 수를 1씩 증가 하는 메서드
+	public void updateStats(Connection conn, Stats stats) throws Exception {
+		PreparedStatement stmt = conn.prepareStatement(StatsQuery.UPDATE_STATS);
+		stmt.setString(1, stats.getDay());
 		
+		stmt.executeUpdate();
+	}
+	//전체 방문자 수 구하는 메서드
+	public int selectTotalCnt(Connection conn) throws Exception{
+		int total = 0;
+		PreparedStatement stmt = conn.prepareStatement(StatsQuery.SELECT_TOTAL_STATS);
+		ResultSet rs = stmt.executeQuery();
+		if(rs.next()) {
+			total = rs.getInt("SUM(count)");
+		}
+		return total;
 	}
 	
 }

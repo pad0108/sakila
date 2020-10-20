@@ -2,17 +2,17 @@ package sakila.vo;
 
 public class Stats {
 	private String day;
-	private long count;
+	private int count;
 	public String getDay() {
 		return day;
 	}
 	public void setDay(String day) {
 		this.day = day;
 	}
-	public long getCount() {
+	public int getCount() {
 		return count;
 	}
-	public void setCount(long count) {
+	public void setCount(int count) {
 		this.count = count;
 	}
 	@Override

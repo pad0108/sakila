@@ -12,6 +12,12 @@
 </head>
 <body>
 	<h1>로그인 폼</h1>
+	<div>
+		오늘 접속자 수 : ${todayStats.count}명
+	</div>
+	<div>
+		총 접속자 수 : ${totalCnt}명
+	</div>
 	<form>
 		<div>
 			<input type="text" placeholder="ID">

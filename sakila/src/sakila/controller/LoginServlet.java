@@ -8,18 +8,32 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import java.util.*;
+import sakila.service.StatsService;
+import sakila.vo.Stats;
+
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
-	// ë¡œê·¸ì¸ í¼
+	private StatsService statsService;
+	
+	// ·Î±×ÀÎ Æû
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		if(session.getAttribute("loginStaff") != null) {
 			response.sendRedirect(request.getContextPath()+"/auth/IndexServlet");
 			return;
 		}
+		// ¿À´Ã Á¢¼ÓÀÚ ¼ö Æû¿¡ ³Ñ°ÜÁÖ±â
+		statsService = new StatsService();
+		Map<String, Object> map = statsService.getStats();
+		Stats todayStats = (Stats) map.get("todayStats");
+		int totalCnt = (Integer) map.get("totalCnt");
+		request.setAttribute("todayStats", todayStats);
+		request.setAttribute("totalCnt", totalCnt);
+				
 		request.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request, response);
 	}
-	// ë¡œê·¸ì¸ ì•¡ì…˜
+	// ·Î±×ÀÎ ¾×¼Ç
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 	}
