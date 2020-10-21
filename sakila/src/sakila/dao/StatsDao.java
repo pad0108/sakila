@@ -3,7 +3,7 @@ package sakila.dao;
 import java.sql.*;
 
 
-import sakila.service.StatsQuery;
+import sakila.query.StatsQuery;
 import sakila.vo.Stats;
 
 public class StatsDao {
