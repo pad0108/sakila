@@ -1,4 +1,4 @@
-package sakila.service;
+package sakila.query;
 
 public class StatsQuery {
 	//쿼리문은 변경 되지 않으므로 final 사용, static으로 지정하여 여러번 객체 생성 X
