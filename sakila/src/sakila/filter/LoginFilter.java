@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 
-@WebFilter("//auth/*")
+@WebFilter("/auth/*")
 public class LoginFilter implements Filter {
 
     public LoginFilter() {

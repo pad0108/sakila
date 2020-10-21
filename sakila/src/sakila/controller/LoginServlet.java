@@ -10,11 +10,13 @@ import javax.servlet.http.HttpSession;
 
 import java.util.*;
 import sakila.service.StatsService;
-import sakila.vo.Stats;
+import sakila.vo.*;
+import sakila.service.*;
 
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
 	private StatsService statsService;
+	private StaffService staffService;
 	
 	// 로그인 폼
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -35,7 +37,32 @@ public class LoginServlet extends HttpServlet {
 	}
 	// 로그인 액션
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		HttpSession session = request.getSession();
+		staffService = new StaffService();
+		
+		//id,pw를 가져오는지 확인
+		System.out.println(request.getParameter("id")+"id------");
+		System.out.println(request.getParameter("pw")+"pw------");
+		
+		//로그인 정보 받아오기
+		Staff staff = new Staff();
+		staff.setStaffId(Integer.parseInt(request.getParameter("id")));
+		staff.setPassword(request.getParameter("pw"));
+		
+		//staffService에서 결과 받아오기
+		Staff returnStaff = staffService.getStaffByKey(staff);
+		
+		//로그인 실패시 로그인 페이지로 이동
+		if(returnStaff == null) {
+			System.out.println("로그인 실패");
+			response.sendRedirect(request.getContextPath() + "/LoginServlet");	
+			
+		}else {//로그인 성공 시 index 페이지로 이동
+			session.setAttribute("loginStaff", returnStaff.getStaffId());
+			System.out.println(returnStaff.getStaffId() + "로그인 성공");
+			response.sendRedirect(request.getContextPath() + "/auth/IndexServlet");
+		}
+		
 	}
 
 }

@@ -12,7 +12,7 @@ public class DBUtil {
 		//DB 연결 되는지 확인
 		System.out.println("-----연결 확인-----");
 		
-		Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+		final Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
 		return conn;	
 	}
 }
