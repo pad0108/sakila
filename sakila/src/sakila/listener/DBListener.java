@@ -15,13 +15,13 @@ public class DBListener implements ServletContextListener {
 
     }
     public void contextInitialized(ServletContextEvent arg0)  { 
-        System.out.println("DBListener.contextInitialized() 角青");
+        System.out.println("DBListener.contextInitialized 鞁ろ枆");
         try {
         	Class.forName("org.mariadb.jdbc.Driver");
-        	System.out.println("Driver 角青");
+        	System.out.println("mariadb 霌滊澕鞚措笇 搿滊敥 靹标车");
         	
         }catch(ClassNotFoundException e){
-        	System.out.println("class.forName() 角青 角菩 !");
+        	System.out.println("Class.forName() 鞁ろ枆 鞁ろ尐");
         	e.printStackTrace();
         }
     }

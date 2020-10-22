@@ -14,9 +14,10 @@ public class IndexServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// ë¹„ë¡œê·¸ì¸ ì¼ ì‹œ ë¡œê·¸ì¸ í˜ì´ì§€ë¡œ ì´ë™
 		HttpSession session = request.getSession();
 		
-		// ½ºÅÂÇÁ ¾ÆÀÌµğ¸¦ index.jsp¿¡ º¸³»ÁÜ
+		// ìŠ¤íƒœí”„ ì•„ì´ë””ë¥¼ index.jspì— ë³´ë‚´ì¤Œ
 		request.setAttribute("staffId", session.getAttribute("loginStaff"));
 		request.getRequestDispatcher("/WEB-INF/views/index.jsp").forward(request, response);
 	}

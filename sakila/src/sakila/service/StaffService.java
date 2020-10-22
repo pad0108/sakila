@@ -17,27 +17,27 @@ public class StaffService {
 		try {
 			conn = DBUtil.getConnection();
 			staffDao = new StaffDao();
-			//¿¬°á È®ÀÎ
-			System.out.println(conn + "connÈ®ÀÎ------");
+			//ì—°ê²° í™•ì¸
+			System.out.println(conn + "conní™•ì¸------");
 			
 			returnStaff = staffDao.selectStaffByKey(conn, staff);
 			
 			System.out.println(staff.getStaffId() + "staffId------");
 			System.out.println(staff.getUserName() +"username-----");
 			
-			conn.commit(); // Ä¿¹Ô
-		}catch(Exception e){ //Ä¿¹Ô ½ÇÆĞ ½Ã ¿¹¿Ü Ã³¸®
+			conn.commit();// ì»¤ë°‹
+		}catch(Exception e){ //ì»¤ë°‹ ì‹¤íŒ¨ ì‹œ ì˜ˆì™¸ ì²˜ë¦¬
 			e.printStackTrace();
-			try { // ·Ñ¹é
+			try { // ë¡¤ë°±
 				conn.rollback();
-			} catch(Exception e1){ //·Ñ¹é ½ÇÆĞ ½Ã ¿¹¿Ü Ã³¸®
+			} catch(Exception e1){ //ë¡¤ë°± ì‹¤íŒ¨ ì‹œ ì˜ˆì™¸ ì²˜ë¦¬
 				e1.printStackTrace();
 				
 			}
 		}finally{
 			try {
 				conn.close();
-			}catch(Exception e) { //conn.close() ½ÇÆĞ½Ã ¿¹¿Ü Ã³¸®
+			}catch(Exception e) { //conn.close() ì‹¤íŒ¨ì‹œ ì˜ˆì™¸ ì²˜ë¦¬
 				e.printStackTrace();
 			}
 			

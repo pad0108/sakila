@@ -15,9 +15,9 @@ public class StatsListener implements HttpSessionListener {
         
     }
 
-    public void sessionCreated(HttpSessionEvent se)  { //¼¼¼Ç »ı¼º ¿©ºÎ È®ÀÎ
+    public void sessionCreated(HttpSessionEvent se)  { //ì„¸ì…˜ ìƒì„± ì—¬ë¶€ í™•ì¸
          if(se.getSession().isNew()) {
-        	 // ¹æ¹®ÀÚ ¼ö¸¦ 1 Áõ°¡ ½ÃÅ´, Ã¹ ¹æ¹®ÀÚ¶ó¸é ¹æ¹®ÀÚ ¼ö¸¦ 1·Î ÃÊ±âÈ­
+        	// ë°©ë¬¸ì ìˆ˜ë¥¼ 1 ì¦ê°€ ì‹œí‚´, ì²« ë°©ë¬¸ìë¼ë©´ ë°©ë¬¸ì ìˆ˜ë¥¼ 1ë¡œ ì´ˆê¸°í™”
         	 statsService = new StatsService();
         	 statsService.countStats();
          }

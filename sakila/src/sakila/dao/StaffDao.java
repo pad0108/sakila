@@ -6,12 +6,12 @@ import sakila.query.StaffQuery;
 import sakila.vo.Staff;
 
 public class StaffDao {
-	//·Î±×ÀÎÇÏ±â À§ÇØ ¾ÆÀÌµğ¿Í ÆĞ½º¿öµå¸¦ ¹Ş´Â ¸Ş¼Òµå
+	//ë¡œê·¸ì¸í•˜ê¸° ìœ„í•´ ì•„ì´ë””ì™€ íŒ¨ìŠ¤ì›Œë“œë¥¼ ë°›ëŠ” ë©”ì†Œë“œ
 	public Staff selectStaffByKey(Connection conn,Staff staff) throws Exception {
 		Staff returnStaff = null;
 		
-		System.out.println(staff.getStaffId() +"staffDao¿¡¼­ ID È®ÀÎ -----------------");
-		System.out.println(staff.getPassword() +"staffDao¿¡¼­ pw È®ÀÎ -----------------");
+		System.out.println(staff.getStaffId() +"staffDaoï¿½ï¿½ï¿½ï¿½ ID È®ï¿½ï¿½ -----------------");
+		System.out.println(staff.getPassword() +"staffDaoï¿½ï¿½ï¿½ï¿½ pw È®ï¿½ï¿½ -----------------");
 		
 		PreparedStatement stmt = conn.prepareStatement(StaffQuery.SELECT_STAFF_BY_KEY);
 		stmt.setInt(1, staff.getStaffId());

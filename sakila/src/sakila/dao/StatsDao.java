@@ -7,7 +7,7 @@ import sakila.query.StatsQuery;
 import sakila.vo.Stats;
 
 public class StatsDao {
-	//³¯Â¥¸¦ ¹Ş¾Æ¿Â ÈÄ ±× ³¯ÀÇ Á¢¼ÓÀÚ°¡ À¯¹« ÆÇº°ÇÏ´Â ¸Ş¼­µå
+	//ë‚ ì§œë¥¼ ë°›ì•„ì˜¨ í›„ ê·¸ ë‚ ì˜ ì ‘ì†ìê°€ ìœ ë¬´ íŒë³„í•˜ëŠ” ë©”ì„œë“œ
 	public Stats selectDay(Connection conn, Stats stats) throws Exception {
 		Stats returnStats = null;
 		PreparedStatement stmt = conn.prepareStatement(StatsQuery.SELECT_DAY);
@@ -20,21 +20,21 @@ public class StatsDao {
 		}
 		return returnStats;
 	}
-	//¹æ¹®ÀÚÀÇ ¼ö¸¦ 1·Î ÃÊ±âÈ­ ½ÃÅ°´Â ¸Ş¼­µå
+	//ë°©ë¬¸ìì˜ ìˆ˜ë¥¼ 1ë¡œ ì´ˆê¸°í™” ì‹œí‚¤ëŠ” ë©”ì„œë“œ
 	public void insertStats(Connection conn, Stats stats) throws Exception {
 		PreparedStatement stmt = conn.prepareStatement(StatsQuery.INSERT_STATS);
 		stmt.setString(1, stats.getDay());
 		
 		stmt.executeUpdate();
 	}
-	//¹æ¹®ÀÚÀÇ ¼ö¸¦ 1¾¿ Áõ°¡ ÇÏ´Â ¸Ş¼­µå
+	//ë°©ë¬¸ìì˜ ìˆ˜ë¥¼ 1ì”© ì¦ê°€ í•˜ëŠ” ë©”ì„œë“œ
 	public void updateStats(Connection conn, Stats stats) throws Exception {
 		PreparedStatement stmt = conn.prepareStatement(StatsQuery.UPDATE_STATS);
 		stmt.setString(1, stats.getDay());
 		
 		stmt.executeUpdate();
 	}
-	//ÀüÃ¼ ¹æ¹®ÀÚ ¼ö ±¸ÇÏ´Â ¸Ş¼­µå
+	//ì „ì²´ ë°©ë¬¸ì ìˆ˜ êµ¬í•˜ëŠ” ë©”ì„œë“œ
 	public int selectTotalCnt(Connection conn) throws Exception{
 		int total = 0;
 		PreparedStatement stmt = conn.prepareStatement(StatsQuery.SELECT_TOTAL_STATS);

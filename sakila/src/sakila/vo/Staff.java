@@ -1,7 +1,7 @@
 package sakila.vo;
 
 public class Staff {
-	//11°³ÀÇ ÇÊµå(¼Ó¼º, ¸â¹öº¯¼ö)
+	//11ê°œì˜ í•„ë“œ(ì†ì„±, ë©¤ë²„ë³€ìˆ˜)
 	private int staffId;
 	private String firstName;
 	private String lastName;
@@ -79,7 +79,7 @@ public class Staff {
 	public void setLastUpdate(String lastUpdate) {
 		this.lastUpdate = lastUpdate;
 	}
-	//toString ¸Ş¼­µå ¿À¹ö¶óÀÌµù
+	//toString ï¿½Ş¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ìµï¿½
 	@Override
 	public String toString() {
 		return "Staff [staffId=" + staffId + ", firstName=" + firstName + ", lastName=" + lastName + ", addressId="

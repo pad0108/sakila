@@ -9,24 +9,24 @@ import sakila.dao.StatsDao;
 import sakila.util.DBUtil;
 public class StatsService {
 	private StatsDao statsDao;
-	// calender¸¦ »ç¿ëÇÏ¿© ¿À´Ã ³¯Â¥¸¦ ±¸ÇÏ´Â ¸Şµå
+	// calenderë¥¼ ì‚¬ìš©í•˜ì—¬ ì˜¤ëŠ˜ ë‚ ì§œë¥¼ êµ¬í•˜ëŠ” ë©”ì†Œë“œ
 	private Stats getToday() {
 		Calendar today = Calendar.getInstance();
-		//simpleDateFormatÀ» »ç¿ëÇÏ¿© ¿øÇÏ´Â Çü½ÄÀ¸·Î ³¯Â¥ Ãâ·Â
+		//simpleDateFormatì„ ì‚¬ìš©í•˜ì—¬ ì›í•˜ëŠ” í˜•ì‹ìœ¼ë¡œ ë‚ ì§œ ì¶œë ¥
 		SimpleDateFormat formater = new SimpleDateFormat("yyyy-MM-dd");
-		//todayº¯¼ö¸¦ stringÀ¸·Î ³ÖÀ½
+		//todayë³€ìˆ˜ë¥¼ stringìœ¼ë¡œ ë„£ìŒ
 		String day = formater.format(today.getTime());
 
-		// stats¿¡ ¿À´Ã ³¯Â¥ Ãß°¡
+		// statsì— ì˜¤ëŠ˜ ë‚ ì§œ ì¶”ê°€
 		Stats stats = new Stats();
 		stats.setDay(day);
 		
-		// µğ¹ö±ë
+		// ë””ë²„ê¹…
 		System.out.println(stats.getDay() + "<--getToday() today");
 		
 		return stats;
 	}
-	//¹æ¹®ÀÚ ¼ö Á¶È¸ÇÏ´Â ¸Ş¼­µå
+	//ë°©ë¬¸ì ìˆ˜ ì¡°íšŒí•˜ëŠ” ë©”ì„œë“œ
 	public Map<String,Object> getStats() {
 		Map<String, Object> map = null;
 		statsDao = new StatsDao();
@@ -34,15 +34,15 @@ public class StatsService {
 		Connection conn = null;
 		
 		try {
-			//DBUtil¿¡¼­ ºÒ·¯¿È
+			//DBUtilì—ì„œ ë¶ˆëŸ¬ì˜´
 			conn = DBUtil.getConnection();
-			conn.setAutoCommit(false);//¿ÀÅäÄ¿¹Ô »ç¿ë X
-			//Áßº¹µÇ´Â ±¸¹®ÀÌ¹Ç·Î getToday¸¦ °¡Á®¿È
+			conn.setAutoCommit(false);//ì˜¤í† ì»¤ë°‹ ì‚¬ìš© X
+			//ì¤‘ë³µë˜ëŠ” êµ¬ë¬¸ì´ë¯€ë¡œ getTodayë¥¼ ê°€ì ¸ì˜´
 			todayStats = getToday();
-			//db¿¡¼­ ¿À´Ã ³¯Â¥°¡ ÀÖ´ÂÁö È®ÀÎ
+			//dbì—ì„œ ì˜¤ëŠ˜ ë‚ ì§œê°€ ìˆëŠ”ì§€ í™•ì¸
 			todayStats = statsDao.selectDay(conn, todayStats);
 			int totalCnt = statsDao.selectTotalCnt(conn);
-			// µğ¹ö±ë
+			// ë””ë²„ê¹…
 			System.out.println(todayStats.getDay() + "<--getStats().todayStats Day");
 			System.out.println(todayStats.getCount() + "<--getStats().todayStats Cnt");
 			System.out.println(totalCnt + "<--getStats() totalCnt");		
@@ -52,55 +52,55 @@ public class StatsService {
 			map.put("totalCnt", totalCnt);
 			
 			conn.commit();
-		} catch(Exception e) { // DB¿¬°á , Äõ¸®¹® ¿À·ù ½Ã
+		} catch(Exception e) { // DBì—°ê²° , ì¿¼ë¦¬ë¬¸ ì˜¤ë¥˜ ì‹œ
 			try {
 				conn.rollback();
-			} catch (SQLException e1) { // ·Ñ¹é ½ÇÆĞ ½Ã
+			} catch (SQLException e1) {  // ë¡¤ë°± ì‹¤íŒ¨ ì‹œ
 				e1.printStackTrace();
 			}
 			e.printStackTrace();
 		} finally {
 			try {
 				conn.close();
-			} catch (SQLException e) { // conn.close ½ÇÆĞ ½Ã
+			} catch (SQLException e) { // conn.close ì‹¤íŒ¨ ì‹œ
 				e.printStackTrace();
 			}
 		}
 		return map;
 		//return 
 	}
-	public void countStats() { // ¹æ¹®ÀÚ ¼ö¸¦ 1 ´õÇÏ´Â ¸Ş¼Òµå
+	public void countStats() { // ë°©ë¬¸ì ìˆ˜ë¥¼ 1 ë”í•˜ëŠ” ë©”ì†Œë“œ
 		Stats stats = new Stats();
 		statsDao = new StatsDao();
 		Connection conn = null;
 		try {
-			//DBUtil¿¡¼­ ºÒ·¯¿È
+			//DBUtilì—ì„œ ë¶ˆëŸ¬ì˜´
 			conn = DBUtil.getConnection();
-			conn.setAutoCommit(false); // ¿ÀÅä Ä¿¹Ô »ç¿ë X
-			//Áßº¹ µÇ´Â ±¸¹®ÀÌ¹Ç·Î getToday »ç¿ë
+			conn.setAutoCommit(false); // ì˜¤í†  ì»¤ë°‹ ì‚¬ìš© X
+			//ì¤‘ë³µ ë˜ëŠ” êµ¬ë¬¸ì´ë¯€ë¡œ getToday ì‚¬ìš©
 			stats = getToday();
-			//db¿¡¼­ ¿À´Ã ³¯Â¥°¡ ÀÖ´ÂÁö È®ÀÎ
+			//dbì—ì„œ ì˜¤ëŠ˜ ë‚ ì§œê°€ ìˆëŠ”ì§€ í™•ì¸
 			stats = statsDao.selectDay(conn, stats);
 			if(stats == null) {
 				stats = getToday();
-				// ¹æ¹®ÀÚ°¡ ÀÖÀ¸¸é + 1				
+				// ë°©ë¬¸ìê°€ ìˆìœ¼ë©´ + 1			
 				statsDao.insertStats(conn, stats);
 			}else {
-				// Ã¹ ¹æ¹®ÀÚ¸é »õ·Î ¸¸µë
+				// ì²« ë°©ë¬¸ìë©´ ìƒˆë¡œ ë§Œë“¬
 				statsDao.updateStats(conn, stats);
 			}
 			conn.commit();
-		}catch(Exception e) { //DB ¿¬°á, Äõ¸®¿¡¼­ ¿¹¿Ü ¹ß»ı ½Ã
+		}catch(Exception e) { //DB ì—°ê²°, ì¿¼ë¦¬ì—ì„œ ì˜ˆì™¸ ë°œìƒ ì‹œ
 			try {
 				conn.rollback();
-			} catch(SQLException e1) { // ·Ñ¹é ½ÇÆĞ ½Ã
+			} catch(SQLException e1) { // ë¡¤ë°± ì‹¤íŒ¨ ì‹œ
 				e1.getStackTrace();
 			}
 			e.printStackTrace();
 		}finally {
 			try {
 				conn.close();
-			} catch(SQLException e) { // conn.close() ½ÇÆĞ ½Ã
+			} catch(SQLException e) { // conn.close() ì‹¤íŒ¨ ì‹œ
 				e.printStackTrace();
 			}
 		}

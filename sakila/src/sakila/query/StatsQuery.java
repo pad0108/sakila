@@ -1,9 +1,12 @@
 package sakila.query;
 
 public class StatsQuery {
-	//Äõ¸®¹®Àº º¯°æ µÇÁö ¾ÊÀ¸¹Ç·Î final »ç¿ë, staticÀ¸·Î ÁöÁ¤ÇÏ¿© ¿©·¯¹ø °´Ã¼ »ı¼º X
+	//ì˜¤ëŠ˜ ë‚ ì§œì˜ ì ‘ì† ì •ë³´
 	public final static String SELECT_DAY = "SELECT * FROM stats WHERE day=?";
+	// ì˜¤ëŠ˜ ë‚ ì§œê°€ ì—†ì„ ë•Œ ì ‘ì†ì ìˆ˜ 1ë¡œ
 	public final static String INSERT_STATS = "INSERT INTO stats(day, count) VALUES(?, 1)";
+	// ì˜¤ëŠ˜ ë‚ ì§œê°€ ìˆì„ ë•Œ ì ‘ì†ì ìˆ˜ +1
 	public final static  String UPDATE_STATS = "UPDATE stats SET count=count+1 WHERE day=?";
+	// ì „ì²´ ì ‘ì†ì ìˆ˜
 	public final static String SELECT_TOTAL_STATS = "SELECT SUM(count) FROM stats";
 }

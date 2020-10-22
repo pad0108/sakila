@@ -3,14 +3,14 @@ package sakila.util;
 import java.sql.*;
 
 public class DBUtil {
-	//DB¿¡ ¿¬°áÇÏ´Â ¸Ş¼Òµå
+	//DBì— ì—°ê²°í•˜ëŠ” ë©”ì†Œë“œ
 	public static Connection getConnection() throws Exception{
 		final String DB_URL = "jdbc:mariadb://localhost:3306/sakila";
 		final String DB_USER = "root";
 		final String DB_PASSWORD = "java1004";
 		
-		//DB ¿¬°á µÇ´ÂÁö È®ÀÎ
-		System.out.println("-----¿¬°á È®ÀÎ-----");
+		//DB ì—°ê²° ë˜ëŠ”ì§€ í™•ì¸
+		System.out.println("-----ì—°ê²°í™•ì¸-----");
 		
 		final Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
 		return conn;	
