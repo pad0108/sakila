@@ -19,7 +19,7 @@ public class IndexServlet extends HttpServlet {
 		
 		// 스태프 아이디를 index.jsp에 보내줌
 		request.setAttribute("staffId", session.getAttribute("loginStaff"));
-		request.getRequestDispatcher("/WEB-INF/views/index.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/views/auth/index.jsp").forward(request, response);
 	}
 
 
