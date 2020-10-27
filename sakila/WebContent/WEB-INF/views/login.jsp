@@ -42,12 +42,12 @@
 			</tr>
 			<tr>
 				<td width="50%">
-					<input type="text" placeholder="id" class="form-control"id="id"name="id">
+					<input type="text" placeholder="id" class="form-control"id="id"name="id" onClick="this.value='chkc90@naver.com'">
 				</td>
 			</tr>
 			<tr>
 				<td  width="50%">
-					<input type="password" placeholder="pw" class="form-control" id="pw"name="pw">
+					<input type="password" placeholder="pw" class="form-control" id="pw"name="pw" onClick="this.value='1234'">
 				</td>
 			</tr>
 			<tr>

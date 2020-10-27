@@ -12,16 +12,19 @@
 </head>
 <body>
 <div class="container">
-	<h1>Index</h1>
-	<div>
-		<span>
-			${loginStaff.userName}
-		</span>관리자님
+	<div class="row">
+		<div class="col-3"style="background-color:#e9e9e9; width:100%; min-height: 960px;">
+			<jsp:include page="/inc/menu.jsp"></jsp:include>
+		</div>
+		<div class="col-9">
+			<div>
+				<h1>Index</h1>
+			</div>
+			<div>
+				<hr style="border: solid 1px; color: #a9a9a9;">
+			</div>
+		</div>
 	</div>
-	<div>
-		<a href="${pageContext.request.contextPath}/auth/logoutServlet"class="btn btn-primary">로그아웃</a>
-	</div>
-
 </div>
 </body>
 </html>
