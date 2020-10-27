@@ -2,7 +2,7 @@ package sakila.vo;
 
 public class Stats {
 	private String day;
-	private int count;
+	private int cnt;
 	public String getDay() {
 		return day;
 	}
@@ -10,13 +10,13 @@ public class Stats {
 		this.day = day;
 	}
 	public int getCount() {
-		return count;
+		return cnt;
 	}
 	public void setCount(int count) {
-		this.count = count;
+		this.cnt = count;
 	}
 	@Override
 	public String toString() {
-		return "Stats [day=" + day + ", count=" + count + "]";
+		return "Stats [day=" + day + ", count=" + cnt + "]";
 	}
 }

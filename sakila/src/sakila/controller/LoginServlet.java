@@ -48,7 +48,7 @@ public class LoginServlet extends HttpServlet {
 		
 		// 로그인 정보 받아오기, staff에 정보 저장
 		Staff staff = new Staff();
-		staff.setStaffId(Integer.parseInt(request.getParameter("id")));
+		staff.setEmail(request.getParameter("id"));
 		staff.setPassword(request.getParameter("pw"));
 		
 		// 서비스에서 인증 결과 받아오기
@@ -60,8 +60,9 @@ public class LoginServlet extends HttpServlet {
 			response.sendRedirect(request.getContextPath() + "/LoginServlet");	
 			
 		}else {//로그인 성공 시 인덱스로 넘어감
-			session.setAttribute("loginStaff", returnStaff.getStaffId());
-			System.out.println(returnStaff.getStaffId() + "로그인 성공");
+			session.setAttribute("loginStaff", returnStaff);
+			
+			System.out.println(returnStaff + "로그인 성공");
 			response.sendRedirect(request.getContextPath() + "/auth/IndexServlet");
 		}
 		

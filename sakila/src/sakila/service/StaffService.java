@@ -22,7 +22,7 @@ public class StaffService {
 			
 			returnStaff = staffDao.selectStaffByKey(conn, staff);
 			
-			System.out.println(staff.getStaffId() + "staffId------");
+			System.out.println(staff.getEmail() + "email------");
 			System.out.println(staff.getUserName() +"username-----");
 			
 			conn.commit();// 커밋

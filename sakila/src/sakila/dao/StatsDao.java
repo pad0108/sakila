@@ -16,7 +16,7 @@ public class StatsDao {
 		if(rs.next()) {
 			returnStats = new Stats();
 			returnStats.setDay(rs.getString("day"));
-			returnStats.setCount(rs.getInt("count"));
+			returnStats.setCount(rs.getInt("cnt"));
 		}
 		return returnStats;
 	}
@@ -40,7 +40,7 @@ public class StatsDao {
 		PreparedStatement stmt = conn.prepareStatement(StatsQuery.SELECT_TOTAL_STATS);
 		ResultSet rs = stmt.executeQuery();
 		if(rs.next()) {
-			total = rs.getInt("SUM(count)");
+			total = rs.getInt("SUM(cnt)");
 		}
 		return total;
 	}

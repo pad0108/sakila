@@ -14,7 +14,8 @@
 <div class="container">
 	<h1>Index</h1>
 	<div>
-		<span><!--${loginStaff.email}-->
+		<span>
+			${loginStaff.userName}
 		</span>관리자님
 	</div>
 	<div>

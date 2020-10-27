@@ -10,18 +10,19 @@ public class StaffDao {
 	public Staff selectStaffByKey(Connection conn,Staff staff) throws Exception {
 		Staff returnStaff = null;
 		
-		System.out.println(staff.getStaffId() +"staffDao���� ID Ȯ�� -----------------");
-		System.out.println(staff.getPassword() +"staffDao���� pw Ȯ�� -----------------");
+		System.out.println(staff.getEmail() +"staffDao에서 ID 확인 -----------------");
+		System.out.println(staff.getPassword() +"staffDao에서 pw 확인 -----------------");
 		
 		PreparedStatement stmt = conn.prepareStatement(StaffQuery.SELECT_STAFF_BY_KEY);
-		stmt.setInt(1, staff.getStaffId());
+		stmt.setString(1, staff.getEmail());
 		stmt.setString(2, staff.getPassword());
 		
 		
 		ResultSet rs = stmt.executeQuery();
 		if(rs.next()) {
 			returnStaff = new Staff();
-			returnStaff.setStaffId(rs.getInt("staff_id"));
+			
+			returnStaff.setEmail(rs.getString("email"));
 			returnStaff.setUserName(rs.getString("userName"));
 		}
 				
