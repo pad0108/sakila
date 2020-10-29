@@ -42,7 +42,7 @@
 			</tr>
 			<tr>
 				<td width="50%">
-					<input type="text" placeholder="id" class="form-control"id="id"name="id" onClick="this.value='chkc90@naver.com'">
+					<input type="text" placeholder="id" class="form-control"id="id"name="id" onClick="this.value='Mike.Hillyer@sakilastaff.com'">
 				</td>
 			</tr>
 			<tr>

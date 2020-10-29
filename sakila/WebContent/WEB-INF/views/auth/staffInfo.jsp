@@ -29,7 +29,7 @@
 	<table>
 		<tr>
 			<td>
-			 	별명:
+			 	별명:${staffInfo.userName}
 			</td>
 		</tr>
 		<tr>

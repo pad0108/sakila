@@ -30,6 +30,7 @@ public class LoginServlet extends HttpServlet {
 		// 오늘 접속자 수 폼에 넘겨주기
 		statsService = new StatsService();
 		Map<String, Object> map = statsService.getStats();
+		
 		Stats todayStats = (Stats) map.get("todayStats");
 		int totalCnt = (Integer) map.get("totalCnt");
 		request.setAttribute("todayStats", todayStats);

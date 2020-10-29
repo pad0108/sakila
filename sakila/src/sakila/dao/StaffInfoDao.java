@@ -16,8 +16,9 @@ public class StaffInfoDao {
 		PreparedStatement stmt = conn.prepareStatement(StaffInfoQuery.SELECT_STAFF_INFO);
 		stmt.setInt(1, staffInfo.getStaffId());
 		ResultSet rs = stmt.executeQuery();
-		
+			System.out.print("23");
 		if(rs.next()) {
+			System.out.print("1");//if 구문에서 막힘.
 			returnStaffInfo = new StaffInfo();
 			
 			returnStaffInfo.setAddress(rs.getString("staff.username"));
@@ -26,7 +27,7 @@ public class StaffInfoDao {
 			returnStaffInfo.setEmail(rs.getString("staff.email"));
 			returnStaffInfo.setFirstName(rs.getString("staff.firs_tname"));
 			returnStaffInfo.setLastName(rs.getString("staff.last_name"));
-			returnStaffInfo.setPhone(rs.getInt("staff_list.phone"));
+			returnStaffInfo.setPhone(rs.getString("staff_list.phone"));
 			returnStaffInfo.setUserName(rs.getString("staff.username"));
 		}
 		
